@@ -1,0 +1,59 @@
+#!/usr/bin/python2
+import os
+from time import sleep
+import urllib, json
+import requests
+import sys
+import subprocess
+from Completedpy2 import track_download
+import sqlite3
+import watchVID
+database = 'LBRYDATA.db'
+conn = sqlite3.connect(database)
+sql = '''create table if not exists LBRY(
+KEYWORDS TEXT, DATA TEXT, unique (DATA));'''
+conn.execute(sql) # shortcut for conn.cursor().execute(sql)
+conn.commit()
+c=conn.cursor()
+search=raw_input("SEARCH : ")
+url = "https://lighthouse.lbry.com/search?s="+search
+response = urllib.urlopen(url)
+data = json.loads(response.read())
+cnt=0
+LIST =[]
+for line in data:
+    cnt=cnt+1
+    line = str(line)
+    line =line.replace("u'","");line =line.replace("{claimId': ","")
+    line =line.replace("', name':","");line =line.replace("}","")
+    line =line[:-1]
+    line=line.split(" ")
+    print cnt,line[1]+"#"+line[0]
+    LIST.append(line[1]+"#"+line[0])
+    content=line[1]+"#"+line[0]
+    try:
+        c.execute("INSERT INTO LBRY VALUES (?,?)", (search, content))
+    except:
+        pass
+conn.commit()
+conn.close()
+choice =int(raw_input("Enter the number you wish to download: Type 99 to exit "))
+#if choice==99:raise SystemExit("Stop right there!")
+if choice==99:raise SystemExit("Stopped by 99 !")    
+print "You will be downloading:",(LIST[choice-1])
+
+requests.post("http://localhost:5279", json={"method": "get", "params": {"uri": LIST[choice-1] }}).json()
+print "Monitoring filesize increase of claim id "+LIST[choice-1][:-30]
+'''
+bashCommand = "lbrynet get "+LIST[choice-1]
+print bashCommand
+process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+output, error = process.communicate()
+print "Monitoring filesize increase of claim id "+LIST[choice-1][:-30]
+'''
+track_download()
+
+try:
+    watchVID.WATCH()
+except:
+    sys.exit()
