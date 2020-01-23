@@ -1,10 +1,15 @@
+#!/usr/bin/python2
+# Usage monitor a download in a directory
+# Example: Monitor /home/<user>/Downloads
 import os
 import sys
 from time import sleep
 import glob
-def track_download():
-    list_of_files = glob.glob('/home/jack/Downloads/*') # * means all if need specific format then *.csv
+
+def track_download(DIR):
+    list_of_files = glob.glob(DIR) # * means all if need specific format then *.csv
     src = max(list_of_files, key=os.path.getctime)
+    print src
     TEXT=[]
     while True:
         file1 = os.stat(src) # initial file size
@@ -16,7 +21,7 @@ def track_download():
         sys.stdout.flush()
         # your script here that collects and writes data (increase file size)
         #print("%.2f" % file1_size),"Mb  ",
-        sleep(10)
+        sleep(30)
         file2 = os.stat(src) # updated file size
         
         file2_size = file2.st_size
@@ -27,5 +32,8 @@ def track_download():
             print ("No filesize change")
             break
         else:
-            sleep(10)
+            sleep(30)
     return TEXT
+DIR = sys.argv[1]
+print DIR   
+track_download(DIR)    
