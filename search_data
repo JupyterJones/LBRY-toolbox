@@ -1,0 +1,15 @@
+#!/usr/bin/python2
+import sqlite3
+database = '/home/jack/Desktop/LBRY-toolbox/5279.db'
+conn = sqlite3.connect(database)
+conn.text_factory = str
+cnt = 0
+Search = raw_input("SEARCH: ")
+c = conn.cursor()
+for row in c.execute("select * from LBRY"):
+    cnt=cnt+1
+    if Search in row[0] or Search in row[1]:
+        print "Download Link: ",row[0]
+        print row[1]
+        print "-------------------------------"
+print cnt    

@@ -1,0 +1,53 @@
+#!/usr/bin/python2
+import os
+from time import sleep
+import urllib
+import simplejson as json
+import requests
+import sys
+import subprocess
+from Completedpy2 import track_download
+import sqlite3
+import watchVID
+database = '/home/jack/Desktop/LBRY-toolbox/5279.db'
+conn = sqlite3.connect(database)
+conn.text_factory = str
+sql = '''create table if not exists LBRY(
+description TEXT, url TEXT, unique (url));'''
+conn.execute(sql) # shortcut for conn.cursor().execute(sql)
+conn.commit()
+c=conn.cursor()
+search=raw_input("SEARCH : ")
+data = requests.post("http://localhost:5279", json={"method": "claim_search", "params": {"text": search,  "page_size":75}}).json()
+LINES = (json.dumps(data, indent=2 * ' '))
+Lin =str(LINES)
+L = Lin.split("\n")
+cnt = 0
+for line in L:
+    DES = []
+    URL = []
+    line= line.replace('\\n',' ')
+    if "permanent_url" in line and "@" not in line:
+        cnt= cnt+1
+        Url = line.lstrip()
+        URL.append(Url) 
+        #print Url
+        #print Url[25:-4]
+        TEXT=Url[25:-4]+":::"
+        #print TEXT
+    if "description" in line:
+        Des=line.lstrip()
+        if len(Des)<5:Des="----------------No Description Given--"
+        DES.append(Des)
+        #print Des
+        TEXT = str(TEXT)+(Des[16:-2])
+        #print TEXT        
+        #print Des[16:-2]
+        TEXT = TEXT.split(":::")
+        try:
+            print TEXT[0]+"------"+TEXT[1]
+            c.execute("INSERT INTO LBRY VALUES (?,?)", (TEXT[0],TEXT[1]))
+        except:
+            pass
+conn.commit()
+conn.close()
