@@ -1,0 +1,11 @@
+#!/home/jack/miniconda3/bin/python
+# Script to get the size of the LBRY blobfiles directory
+import subprocess
+from os.path import expanduser
+# Get HOME
+HOME = expanduser("~")
+# To the HOME add /.local/share/lbry/lbrynet/blobfiles
+path = HOME+'/.local/share/lbry/lbrynet/blobfiles'
+#get the directory size 
+size = subprocess.check_output(['du','-sh' ,path]).split()[0].decode('utf-8')
+print('Directory-size: lbrynet/blobfiles ' + size)
