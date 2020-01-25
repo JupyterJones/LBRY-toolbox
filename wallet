@@ -1,0 +1,18 @@
+
+
+#echo "{ \"Date\": `date`," >>/home/jack/wallet.balance
+echo "{ \"Date\": `date +%s`," >>/home/jack/wallet.balance
+
+lbrynet wallet balance >>/home/jack/wallet.balance
+
+#sed -i '$ d' /home/jack/wallet.balance
+#echo "\{ ,"  >> /home/jack/wallet.balance
+#sed -i '$ d' /home/jack/wallet.balance
+#echo "\"Date\": `date`" >>/home/jack/wallet.balance
+echo "}" >>/home/jack/wallet.balance
+cat /home/jack/wallet.balance
+
+
+#echo "echo \"we are now going to work with \${ser}\" " >> $servfile 
+#echo "echo \"Date : \${DATE}\" " >>/home/jack/wallet.balance
+#echo "\r ," >>/home/jack/wallet.balance
