@@ -1,0 +1,49 @@
+#!/usr/bin/python2
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+import time
+import matplotlib.patches as mpatches
+DT = time.strftime("%Y-%m-%d-%H:%M")
+# use for filename
+dt = time.strftime("%Y%m%d%H%M-")
+f = open("/home/jack/wallet.balance").readlines()
+x = []
+y = []
+for line in f:
+    if '"supports": "' in line:
+        line =line.replace('"\n', '')
+        line =line.replace('"supports": "', '')
+        line =line.replace('",', '')
+        num = float(line)
+        x.append(int(num))
+
+for lines in f:
+    if '"tips": "' in lines:
+        lines =lines.replace('"\n', '')
+        lines =lines.replace('"tips": "', '')
+        lines =lines.replace('",', '')
+        nums = float(lines)
+        y.append(int(nums))        
+        
+# Data for plotting
+t=range(0,len(x))  
+S = np.array(x)
+s = np.array(y)
+
+fig, ax = plt.subplots(dpi=150)
+ax.grid(color = "salmon", alpha = .9, linewidth = 2)
+
+red_patch = mpatches.Patch(color='green', alpha = .5, label='Supports')
+blue_patch = mpatches.Patch(color='blue', alpha = .5, label='Tips')
+plt.legend(handles=[red_patch, blue_patch])
+ax.set(xlabel='DATE: '+DT)
+
+fig.patch.set_facecolor('salmon')
+#plt.plot(yinc, y, color= 'green', alpha = .5)
+#plt.plot(yinc, y, color= 'red', alpha = .5)
+plt.plot(t, s, color= 'blue')
+plt.plot(t, S, color= 'green')
+#filename = "video_resources/"+dt+"test1.png"
+filename0 = "/home/jack/Desktop/JupyterNotebooks-languages/video_resources/"+dt+"full.png"
+plt.savefig(filename0 , bbox_inches="tight", facecolor="salmon")

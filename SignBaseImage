@@ -1,0 +1,102 @@
+#!/usr/bin/python2
+import random
+from random import randint
+import subprocess
+import time
+import markovify
+import os
+import sys
+from glob import glob
+from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageFilter
+if not os.path.exists('/home/jack/Desktop/JupyterNotebooks-languages/images'):
+    os.makedirs('/home/jack/Desktop/JupyterNotebooks-languages/images')
+if not os.path.exists('/home/jack/Desktop/JupyterNotebooks-languages/post'):
+    os.makedirs('/home/jack/Desktop/JupyterNotebooks-languages/post')    
+list_of_files = glob('/home/jack/Desktop/JupyterNotebooks-languages/video_resources/*full.png') # * means all *full.png
+filename0 = max(list_of_files, key=os.path.getctime)
+dt = time.strftime("%Y%m%d%H%M-")
+
+bashCommand = "curl https://api.cryptonator.com/api/ticker/lbc-usd >/home/jack/Desktop/JupyterNotebooks-languages/cryptonator"
+output = subprocess.check_output(['bash','-c', bashCommand])
+data = open("/home/jack/Desktop/JupyterNotebooks-languages/cryptonator").readlines()
+DATA = str(data).split(",")
+     
+img = Image.new('RGB', (220, 110), color = (255, 140, 105))
+fnt = ImageFont.truetype('/home/jack/fonts/DejaVuSerif.ttf', 15)     
+d = ImageDraw.Draw(img)
+d.text((10,10), DATA[1], font=fnt, fill=(0,0,0))
+d.text((10,30), DATA[2], font=fnt, fill=(0,0,0))
+d.text((10,50), DATA[4][:-1], font=fnt, fill=(0,0,0))
+d.text((10,70), DATA[5], font=fnt, fill=(0,0,0))
+img.save('/home/jack/Desktop/JupyterNotebooks-languages/images/pil_text.png')
+
+
+def generate_the_word(infile):
+        with open(infile) as f:
+            contents_of_file = f.read()
+        lines = contents_of_file.splitlines()
+        line_number = random.randrange(0, len(lines))
+        return lines[line_number]
+
+def draw_blurred_back(img, position, text, font, col, halo_col):
+    halo = Image.new('RGBA', (1280,720), (0, 0, 0, 0))
+    ImageDraw.Draw(halo).text(position, text, font = font, fill = halo_col)
+    blurred_halo = halo.filter(ImageFilter.BLUR)
+    ImageDraw.Draw(blurred_halo).text(position, text, font = font, fill = col)
+    return Image.composite(img, blurred_halo, ImageChops.invert(blurred_halo))
+
+if __name__ == '__main__':
+    #inp = Image.open(filename0)
+    inp = Image.new('RGBA', (1280,720), (21,175,75))
+    font = ImageFont.truetype("/home/jack/fonts/Exo-Black.ttf", 30)
+    text_title = (255, 255,230) # bright green
+    blur_title = (0, 0, 0)   # black
+    #textin = (generate_the_word("wordcloud.txt"))
+    i2 = draw_blurred_back(inp, (2, 24), "@LBC-toolbox", font, text_title, blur_title)
+    font0 = ImageFont.truetype("/home/jack/fonts/Exo-Black.ttf", 20)
+    i2 = draw_blurred_back(i2, (2, 70), "LBRY LBC Support-Tips", font0, text_title, blur_title)    
+    i2 = draw_blurred_back(i2, (2, 100), "LBC-TwitterPlotBot", font0, text_title, blur_title) 
+    i2 = draw_blurred_back(i2, (2, 150), "Don't have the app -", font0, text_title, blur_title)
+    i2 = draw_blurred_back(i2, (2, 180), "Visit me on lbry.tv", font0, text_title, blur_title) 
+
+    # get a font
+    fnt = ImageFont.truetype("/home/jack/fonts/Exo-Black.ttf", 30)
+    # get a drawing context
+    signature_ = "@MyLinuxToyBox     @TotallyInsaneArt      @PhilippineRetirement" 
+    #get length in pixel of signature_
+    sizeS,ln = fnt.getsize(signature_)
+    #add 15 pixels to right border
+    pt = sizeS+90
+    width, height = inp.size
+    #marginx starting point of signature_
+    marginx = pt
+    #bottom margin
+    marginy = 80
+    x = width - marginx
+    y = height - marginy
+    
+
+    text_sig = (255, 255,230) # bright green
+    blur_sig = (0, 0, 0)   # black
+    txt=draw_blurred_back(i2,(x,y), signature_, fnt, text_sig, blur_sig)
+    out = Image.alpha_composite(i2, txt)
+    #out.save("images/TEMP_POST.png")
+    background = Image.new('RGBA', (1280,720), (21,175,75))
+    #txt=draw_blurred_back(background,(x,y), i2, fnt, text_sig, blur_sig)
+    txt=draw_blurred_back(background,(x,y), signature_, fnt, text_sig, blur_sig)
+    txt.paste(out, (50, 20))
+    im2=Image.open(filename0)
+    plot  = im2.resize((940,600) , Image.NEAREST)
+    txt.paste(plot, (300,50))
+    filename0 = "/home/jack/Desktop/JupyterNotebooks-languages/post/"+dt+"POST.png"
+    txt.save(filename0, quality=95)
+    
+files = glob('/home/jack/Desktop/JupyterNotebooks-languages/post/*POST.png') # * means all *full.png
+PATH = max(files, key=os.path.getctime)    
+image = Image.open(PATH)
+over = Image.open("/home/jack/Desktop/JupyterNotebooks-languages/images/pil_text.png")
+over2 = Image.open("/home/jack/Desktop/JupyterNotebooks-languages/images/logo.png")
+image.paste(over, (50,250))
+image.paste(over2, (50,395))
+filename = time.strftime("/home/jack/Desktop/JupyterNotebooks-languages/video_resources/%Y%m%d%H%M-"+"final.png")
+image.save(filename)
