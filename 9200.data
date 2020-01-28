@@ -1,0 +1,126 @@
+{
+  "took" : 5,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 2,
+    "successful" : 2,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "jacknorthrup",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "joeshitt",
+          "post_date" : "2009-12-15T13:12:00",
+          "message" : "This is the third"
+        }
+      },
+      {
+        "_index" : "twitter",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "kimchy",
+          "post_date" : "2009-11-15T13:12:00",
+          "message" : "Trying out Elasticsearch, so far so good?"
+        }
+      },
+      {
+        "_index" : "twitter",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "kimchy",
+          "post_date" : "2009-11-15T13:12:00",
+          "message" : "Trying out Elasticsearch for the second time"
+        }
+      },
+      {
+        "_index" : "twitter",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "elastic",
+          "post_date" : "2010-01-15T01:46:38",
+          "message" : "Building the site, should be kewl"
+        }
+      }
+    ]
+  }
+}
+{
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 2,
+    "successful" : 2,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 4,
+      "relation" : "eq"
+    },
+    "max_score" : 1.0,
+    "hits" : [
+      {
+        "_index" : "jacknorthrup",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "joeshitt",
+          "post_date" : "2009-12-15T13:12:00",
+          "message" : "This is the third"
+        }
+      },
+      {
+        "_index" : "twitter",
+        "_type" : "_doc",
+        "_id" : "1",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "kimchy",
+          "post_date" : "2009-11-15T13:12:00",
+          "message" : "Trying out Elasticsearch, so far so good?"
+        }
+      },
+      {
+        "_index" : "twitter",
+        "_type" : "_doc",
+        "_id" : "2",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "kimchy",
+          "post_date" : "2009-11-15T13:12:00",
+          "message" : "Trying out Elasticsearch for the second time"
+        }
+      },
+      {
+        "_index" : "twitter",
+        "_type" : "_doc",
+        "_id" : "3",
+        "_score" : 1.0,
+        "_source" : {
+          "user" : "elastic",
+          "post_date" : "2010-01-15T01:46:38",
+          "message" : "Building the site, should be kewl"
+        }
+      }
+    ]
+  }
+}
