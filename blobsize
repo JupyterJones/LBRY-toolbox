@@ -1,0 +1,8 @@
+#!/usr/bin/python2
+import subprocess
+import os
+HOME = os.environ['HOME']
+
+path = HOME+'/.local/share/lbry/lbrynet/blobfiles'
+size = subprocess.check_output(['du','-sh' ,path]).split()[0].decode('utf-8')
+print("Directory size: " + size)
