@@ -1,6 +1,16 @@
 # LBRY-toolbox
 Some tools I use on LBRY to get and post content. They are in the form of Bash and Python scripts. Also group of Jupyter notebooks used to create the scripts. Enjoy and subscribe to LBRY.
 
+
+***
+This is under developement, howevry many components work quite well. The goal is a Google like **Analytics** visually showing the performance of uploads. 
+
+Now the data is stored in Sqlite3, but to learn the Elasticsearch client it will in the future be stored Elasticsearch Database.
+
+This will be a nice resource to learn the **Nuts and Bolts** of the LBRY platform.
+***
+
+
 ### Script to get the size of the LBRY blobfiles directory
   **blobfilesize**
 ### Plays the last file entered in a directory with vlc
