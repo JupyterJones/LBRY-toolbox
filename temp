@@ -1,0 +1,142 @@
+{
+  "blocked": {
+    "channels": {},
+    "total": 0
+  },
+  "items": [
+    {
+      "address": "bLmC7m4BjGrsL2E9x8Sve2giew8HKcafZY",
+      "amount": "1.0",
+      "canonical_url": "lbry://@TotallyInsaneArt#d/Coronavirus-2019-nCoV_Update#9",
+      "claim_id": "97383f45372bb1e37f46c37db1a2105d7d9a10fe",
+      "claim_op": "update",
+      "confirmations": 2740,
+      "height": 707131,
+      "is_change": false,
+      "is_channel_signature_valid": true,
+      "is_mine": false,
+      "meta": {
+        "activation_height": 707125,
+        "creation_height": 707125,
+        "creation_timestamp": 1580267362,
+        "effective_amount": "260.0",
+        "expiration_height": 2809525,
+        "is_controlling": true,
+        "reposted": 0,
+        "support_amount": "259.0",
+        "take_over_height": 707125,
+        "trending_global": 0.0,
+        "trending_group": 1,
+        "trending_local": -0.7285998463630676,
+        "trending_mixed": 0.0
+      },
+      "name": "Coronavirus-2019-nCoV_Update",
+      "normalized_name": "coronavirus-2019-ncov_update",
+      "nout": 0,
+      "permanent_url": "lbry://Coronavirus-2019-nCoV_Update#97383f45372bb1e37f46c37db1a2105d7d9a10fe",
+      "short_url": "lbry://Coronavirus-2019-nCoV_Update#9",
+      "signing_channel": {
+        "address": "bDyZqrP3KoUVjotbdiRsPgkXpqHvASLPrT",
+        "amount": "0.005",
+        "canonical_url": "lbry://@TotallyInsaneArt#d",
+        "claim_id": "d66948527ed2bf54a0e76e2ffe76467cc39e72e4",
+        "claim_op": "update",
+        "confirmations": 20793,
+        "has_signing_key": false,
+        "height": 689078,
+        "is_change": false,
+        "is_mine": false,
+        "meta": {
+          "activation_height": 672657,
+          "claims_in_channel": 67,
+          "creation_height": 672657,
+          "creation_timestamp": 1574751406,
+          "effective_amount": "20.004893",
+          "expiration_height": 2775057,
+          "is_controlling": true,
+          "reposted": 0,
+          "support_amount": "19.999893",
+          "take_over_height": 672657,
+          "trending_global": 0.0,
+          "trending_group": 0,
+          "trending_local": 0.0,
+          "trending_mixed": 0.0
+        },
+        "name": "@TotallyInsaneArt",
+        "normalized_name": "@totallyinsaneart",
+        "nout": 0,
+        "permanent_url": "lbry://@TotallyInsaneArt#d66948527ed2bf54a0e76e2ffe76467cc39e72e4",
+        "short_url": "lbry://@TotallyInsaneArt#d",
+        "timestamp": 1577378517,
+        "txid": "b2f651f828d4844713ba73da9537dd9de4720ddc847e378e0e024d58be49d338",
+        "type": "claim",
+        "value": {
+          "cover": {
+            "url": "https://thumbnails.lbry.com/banner-UC0q_JZ7oP2fhc777QhJwAwQ"
+          },
+          "description": "My motto is \"Go Insane\".  That be my way of saying \"Subscribe to me\"\nTotally insane art is a place where I can meet other people in the art community and a place where I can play with ideas to show other people what I'm doing. I wish to join other members of the art community in order to share and exchange ideas. Only Open Source (FREE) software will be used in the creation of videos on this channel. The primary programs will be Gimp, Krita, Kdenlive, Inkscape, Audacity and FFmpeg. I will use Synfig Studio for any animations. All these programs work on Windows, Linux and Mac OS. \nI am a programmer of over thirty-five years computer experience. I am proficient in HTML, CSS, JavaScript, PHP, MySQL, Sqlite3, Python, Ruby, NodeJS. My background is computer automation.\nGraphics, Animation and Video Editing is my fun. YouTube is a means of sharing my \"fun\".\nThank You for reading about me,\nJack Northrup",
+          "locations": [
+            {
+              "country": "PH"
+            }
+          ],
+          "public_key": "3056301006072a8648ce3d020106052b8104000a034200044cfeded452a5cc61f694c439528ec580b9ab375032c916afc876a07162262fa9f01bc776d608b69059a2b283fe2b677872fdb645edf47fa25283a2cff38ea7d7",
+          "public_key_id": "bWVosWDqF2vM9FELP47vCqsQkmG5uSD9gq",
+          "tags": [
+            "animation",
+            "computer graphics",
+            "art videos",
+            "kdenlive"
+          ],
+          "thumbnail": {
+            "url": "https://thumbnails.lbry.com/UC0q_JZ7oP2fhc777QhJwAwQ"
+          },
+          "title": "Totally Insane Art"
+        },
+        "value_type": "channel"
+      },
+      "timestamp": 1580267807,
+      "txid": "893cc2c6081fcbb6616c726b5e03895968e28f1db3b5cbe8fe8ec0d8c7d24b6b",
+      "type": "claim",
+      "value": {
+        "description": "I live in the Philippines,so this Coronavirus is of special intest to me and my family.\nI will be watching and posting updates.\nThis growth is astounding Subscribe and watch this Data And Info\nCoronavirus_Wuhan_2019-nCoV_Global_Cases (by Johns Hopkins CSSE)\nhttps://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html",
+        "image": {
+          "height": 768,
+          "width": 1360
+        },
+        "languages": [
+          "en"
+        ],
+        "license": "None",
+        "release_time": "1580267157",
+        "source": {
+          "hash": "31ec1921bc8faec2b641d50860e68dfde3cff0886575006990ad45ad5740a0cfef2eb7b3359a75b62c8abc7f57bd61bb",
+          "media_type": "image/png",
+          "name": "Coronavirus-2019-nCoV_2020-01-29-10-8-04.png",
+          "sd_hash": "428adec90ac3150fee52ce010bf24005f47222cd906035360cc7d195b3977bc37fe88371622fd80d0818440fd48e9382",
+          "size": "437205"
+        },
+        "stream_type": "image",
+        "tags": [
+          "coronavirus",
+          "coronavirus update",
+          "coronavirus wuhan",
+          "coronavirus_wuhan",
+          "coronavirus_wuhan_2019-ncov_global_cases",
+          "global_cases coronavirus",
+          "johns hopkins csse",
+          "wuhan_2019-ncov"
+        ],
+        "thumbnail": {
+          "url": "https://spee.ch/7/6e28nhKv2Av2vPT3WzsshY8F.png"
+        },
+        "title": "Coronavirus-2019-nCoV Update 2020-01-29-10-8-04"
+      },
+      "value_type": "stream"
+    }
+  ],
+  "page": 1,
+  "page_size": 20,
+  "total_items": 1,
+  "total_pages": 1
+}
