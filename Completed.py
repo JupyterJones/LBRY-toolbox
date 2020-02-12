@@ -1,5 +1,6 @@
 #!/user/bin/python
 import os
+import sys
 from time import sleep
 import glob
 def track_download():
@@ -18,7 +19,7 @@ def track_download():
         #print("%.2f" % file1_size),"Mb  ",
         sleep(10)
         file2 = os.stat(src) # updated file size
-        
+
         file2_size = file2.st_size
         comp = file2_size - file1_size # compares sizes
         if comp == 0:
