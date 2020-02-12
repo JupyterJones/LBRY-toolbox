@@ -17,7 +17,7 @@ def track_download():
         sys.stdout.flush()
         # your script here that collects and writes data (increase file size)
         #print("%.2f" % file1_size),"Mb  ",
-        sleep(10)
+        sleep(20)
         file2 = os.stat(src) # updated file size
 
         file2_size = file2.st_size
@@ -25,8 +25,8 @@ def track_download():
         if comp == 0:
             #restart_program(src)
             TEXT.append("The File Appears to be completed.")
-            print ("No filesize change")
+            print ("Waited 40 seconds No filesize change")
             break
         else:
-            sleep(10)
+            sleep(20)
     return TEXT
