@@ -1,4 +1,9 @@
-# LBRY-toolbox
+# GitHub -LBRY-toolbox is being updated to Python3 
+
+***
+##Many things are not working during update. Update should be complete by Feb 14, 2020
+***
+
 ## https://github.com/JupyterJones/LBRY-toolbox 
 Some tools I use on LBRY to get and post content. They are in the form of Bash and Python scripts. Also group of Jupyter notebooks used to create the scripts. Enjoy and subscribe to LBRY.
 
