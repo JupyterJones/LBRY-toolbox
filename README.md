@@ -52,3 +52,6 @@ filename: **BaseImage**
 
 ###`SignBaseImage` adds the Background, Text and LBC prices to the Image created by BaseImage
 filename: **SignBaseImage**
+ 
+###`CaPplay` is a Screen capture bash script choose capture size. Then launches vlc to view the video.
+filename: **CaPplay**

@@ -4,7 +4,7 @@ import sys
 from time import sleep
 import glob
 def track_download():
-    list_of_files = glob.glob('/home/jack/Downloads/*') # * means all if need specific format then *.csv
+    list_of_files = glob.glob(os.getcwd()+'/DownloadDirectory/*') # * means all if need specific format then *.csv
     src = max(list_of_files, key=os.path.getctime)
     TEXT=[]
     while True:

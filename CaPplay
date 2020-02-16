@@ -11,28 +11,28 @@ do
             #sleep 8
             #espeak "beep"
             ffmpeg -y  -f alsa -ac 2 -i hw:2,0 -strict -2 -f x11grab -framerate 30 -video_size 1280x720 -i :0.0+0,36 \
-            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast /home/jack/Desktop/ScreenCaptures/$(date +%s)_1280x720.mp4
+            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast $HOME/Downloads/$(date +%s)_1280x720.mp4
             break
             ;;
         "1280x720Cam")
             sleep 8
             espeak "beep"
             ffmpeg -y  -f alsa -ac 1 -i hw:1,0 -strict -2 -f x11grab -framerate 30 -video_size 1280x720 -i :0.0+0,36 \
-            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast /home/jack/Desktop/ScreenCaptures/$(date +%s)_1280x720.mp4
+            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast $HOME/Downloads/$(date +%s)_1280x720.mp4
             break
             ;;
         "Terminal-1280x508")
             sleep 8
             espeak "beep"
             ffmpeg -y  -f alsa -ac 2 -i hw:2,0 -strict -2 -f x11grab -framerate 30 -video_size 1280x508 -i :0.0+0,36 \
-            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast /home/jack/Desktop/ScreenCaptures/$(date +%s)Terminal_1280x508.mp4
+            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast $HOME/Downloads/$(date +%s)Terminal_1280x508.mp4
             break
             ;;            
         "FullScreen")
             sleep 8
             espeak "beep"
             ffmpeg -y  -f alsa -ac 2 -i hw:2,0 -strict -2 -f x11grab -framerate 30 -video_size 1360x768 -i :0.0 \
-            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast /home/jack/Desktop/ScreenCaptures/$(date +%s)_Fullscreen.mp4
+            -c:v libx264 -pix_fmt yuv420p -qp 0 -preset ultrafast $HOME/Downloads/$(date +%s)_Fullscreen.mp4
             break
             ;;
         "Quit")

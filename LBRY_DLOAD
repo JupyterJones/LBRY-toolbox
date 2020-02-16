@@ -46,7 +46,7 @@ print ("You will be downloading:",(LIST[choice-1]))
 requests.post("http://localhost:5279", json={"method": "get", "params": {"uri": LIST[choice-1] }}).json()
 print ("Monitoring filesize increase of claim id "+LIST[choice-1][:-30])
 '''
-bashCommand = "lbrynet get "+LIST[choice-1]
+bashCommand = "lbrynet get "+LIST[choice-1]+" --download_directory=../Downloads
 print bashCommand
 process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
