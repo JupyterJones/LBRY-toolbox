@@ -1,10 +1,10 @@
 #!/usr/bin/python
 import os
 from time import sleep
-import urllib, json
-import urllib.request
-import requests
+import json
+from urllib import request
 import sys
+import requests
 import subprocess
 from Completed import track_download
 import sqlite3
@@ -18,20 +18,22 @@ conn.commit()
 c=conn.cursor()
 search=input("SEARCH : ")
 url = "https://lighthouse.lbry.com/search?s="+search
-response = urllib.request.urlopen(url)
+
+response = request.urlopen(url)
 data = json.loads(response.read())
 cnt=0
 LIST =[]
 for line in data:
     cnt=cnt+1
     line = str(line)
-    line =line.replace("u'","");line =line.replace("{claimId': ","")
-    line =line.replace("', name':","");line =line.replace("}","")
-    line =line[:-1]
+    to_remove = "\"',[](){}"
+    for i in to_remove:
+        line = line.replace(i, "")
     line=line.split(" ")
-    print (cnt,line[1]+"#"+line[0])
-    LIST.append(line[1]+"#"+line[0])
-    content=line[1]+"#"+line[0]
+    #print (cnt,line[1]+"#"+line[3])
+    LIST.append(line[3]+"#"+line[1])
+    content=line[3]+"#"+line[1]
+    print (cnt,':  ',content)
     try:
         c.execute("INSERT INTO LBRY VALUES (?,?)", (search, content))
     except:
@@ -42,11 +44,12 @@ choice =int(input("Enter the number you wish to download: Type 99 to exit "))
 #if choice==99:raise SystemExit("Stop right there!")
 if choice==99:raise SystemExit("Stopped by 99 !")
 print ("You will be downloading:",(LIST[choice-1]))
-
-requests.post("http://localhost:5279", json={"method": "get", "params": {"uri": LIST[choice-1] }}).json()
+print (os.getcwd()+"/DownloadDirectory")
+#requests.post("http://localhost:5279", json={"method": "get", "params": {"uri": LIST[choice-1] }}).json()
+requests.post("http://localhost:5279", json={"method": "get", "params": {"download_directory": os.getcwd()+"/Downloads","uri": LIST[choice-1] }}).json()
 print ("Monitoring filesize increase of claim id "+LIST[choice-1][:-30])
 '''
-bashCommand = "lbrynet get "+LIST[choice-1]+" --download_directory=../Downloads
+bashCommand = "lbrynet get "+LIST[choice-1]+" --download_directory=/home/jack/Desktop/Downloads"
 print bashCommand
 process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
@@ -54,8 +57,8 @@ print "Monitoring filesize increase of claim id "+LIST[choice-1][:-30]
 '''
 track_download()
 
-#uncomment below to auto-open vlc to view the downloaded video
-#try:
-#    watchVID.WATCH()
-#except:
-#    sys.exit()
+try:
+    watchVID.WATCH()
+except:
+    sys.exit()
+
