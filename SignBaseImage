@@ -1,34 +1,34 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 import random
 from random import randint
 import subprocess
 import time
-import markovify
+#import markovify
 import os
 import sys
 from glob import glob
 from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageFilter
-if not os.path.exists('/home/jack/Desktop/JupyterNotebooks-languages/images'):
-    os.makedirs('/home/jack/Desktop/JupyterNotebooks-languages/images')
-if not os.path.exists('/home/jack/Desktop/JupyterNotebooks-languages/post'):
-    os.makedirs('/home/jack/Desktop/JupyterNotebooks-languages/post')    
-list_of_files = glob('/home/jack/Desktop/JupyterNotebooks-languages/video_resources/*full.png') # * means all *full.png
+if not os.path.exists('/home/jack/Desktop/VPSimages'):
+    os.makedirs('/home/jack/Desktop/VPSimages')
+if not os.path.exists('/home/jack/Desktop/post'):
+    os.makedirs('/home/jack/Desktop/post')
+list_of_files = glob('/home/jack/Desktop/VPS_resources/*full.png') # * means all *full.png
 filename0 = max(list_of_files, key=os.path.getctime)
 dt = time.strftime("%Y%m%d%H%M-")
 
-bashCommand = "curl https://api.cryptonator.com/api/ticker/lbc-usd >/home/jack/Desktop/JupyterNotebooks-languages/cryptonator"
+bashCommand = "curl https://api.cryptonator.com/api/ticker/lbc-usd >/home/jack/Desktop/cryptonator"
 output = subprocess.check_output(['bash','-c', bashCommand])
-data = open("/home/jack/Desktop/JupyterNotebooks-languages/cryptonator").readlines()
+data = open("/home/jack/Desktop/cryptonator").readlines()
 DATA = str(data).split(",")
-     
+
 img = Image.new('RGB', (220, 110), color = (255, 140, 105))
-fnt = ImageFont.truetype('/home/jack/fonts/DejaVuSerif.ttf', 15)     
+fnt = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf', 15)
 d = ImageDraw.Draw(img)
 d.text((10,10), DATA[1], font=fnt, fill=(0,0,0))
 d.text((10,30), DATA[2], font=fnt, fill=(0,0,0))
 d.text((10,50), DATA[4][:-1], font=fnt, fill=(0,0,0))
 d.text((10,70), DATA[5], font=fnt, fill=(0,0,0))
-img.save('/home/jack/Desktop/JupyterNotebooks-languages/images/pil_text.png')
+img.save('/home/jack/Desktop/post/pil_text.png')
 
 
 def generate_the_word(infile):
@@ -48,21 +48,21 @@ def draw_blurred_back(img, position, text, font, col, halo_col):
 if __name__ == '__main__':
     #inp = Image.open(filename0)
     inp = Image.new('RGBA', (1280,720), (21,175,75))
-    font = ImageFont.truetype("/home/jack/fonts/Exo-Black.ttf", 30)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf", 30)
     text_title = (255, 255,230) # bright green
     blur_title = (0, 0, 0)   # black
     #textin = (generate_the_word("wordcloud.txt"))
-    i2 = draw_blurred_back(inp, (2, 24), "@LBC-toolbox", font, text_title, blur_title)
-    font0 = ImageFont.truetype("/home/jack/fonts/Exo-Black.ttf", 20)
-    i2 = draw_blurred_back(i2, (2, 70), "LBRY LBC Support-Tips", font0, text_title, blur_title)    
-    i2 = draw_blurred_back(i2, (2, 100), "LBC-TwitterPlotBot", font0, text_title, blur_title) 
-    i2 = draw_blurred_back(i2, (2, 150), "Don't have the app -", font0, text_title, blur_title)
-    i2 = draw_blurred_back(i2, (2, 180), "Visit me on lbry.tv", font0, text_title, blur_title) 
+    i2 = draw_blurred_back(inp, (1, 24), "@LBRY-vps", font, text_title, blur_title)
+    font0 = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf", 20)
+    i2 = draw_blurred_back(i2, (1, 70), "VPS Support-Tips", font0, text_title, blur_title)    
+    i2 = draw_blurred_back(i2, (1, 100), "LBC-vpsPlotBot", font0, text_title, blur_title) 
+    i2 = draw_blurred_back(i2, (1, 150), "Don't have the app", font0, text_title, blur_title)
+    i2 = draw_blurred_back(i2, (1, 180), "Visit lbry.tv", font0, text_title, blur_title) 
 
     # get a font
-    fnt = ImageFont.truetype("/home/jack/fonts/Exo-Black.ttf", 30)
+    fnt = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf", 30)
     # get a drawing context
-    signature_ = "@MyLinuxToyBox     @TotallyInsaneArt      @PhilippineRetirement" 
+    signature_ = "@MyLinuxToyBox @LBRY_vps @TotallyInsaneArt @PhilippineRetirement" 
     #get length in pixel of signature_
     sizeS,ln = fnt.getsize(signature_)
     #add 15 pixels to right border
@@ -88,15 +88,16 @@ if __name__ == '__main__':
     im2=Image.open(filename0)
     plot  = im2.resize((940,600) , Image.NEAREST)
     txt.paste(plot, (300,50))
-    filename0 = "/home/jack/Desktop/JupyterNotebooks-languages/post/"+dt+"POST.png"
+    filename0 = "/home/jack/Desktop/post/"+dt+"POST.png"
     txt.save(filename0, quality=95)
-    
-files = glob('/home/jack/Desktop/JupyterNotebooks-languages/post/*POST.png') # * means all *full.png
-PATH = max(files, key=os.path.getctime)    
+
+files = glob('/home/jack/Desktop/post/*POST.png') # * means all *full.png
+PATH = max(files, key=os.path.getctime)
 image = Image.open(PATH)
-over = Image.open("/home/jack/Desktop/JupyterNotebooks-languages/images/pil_text.png")
-over2 = Image.open("/home/jack/Desktop/JupyterNotebooks-languages/images/logo.png")
+over = Image.open("/home/jack/Desktop/post/pil_text.png")
+over2 = Image.open("/home/jack/Desktop/LBRY-toolbox/images/logo.png")
 image.paste(over, (50,250))
 image.paste(over2, (50,395))
-filename = time.strftime("/home/jack/Desktop/JupyterNotebooks-languages/video_resources/%Y%m%d%H%M-"+"final.png")
+filename = time.strftime("/home/jack/Desktop/VPS_resources/%Y%m%d%H%M-"+"final.png")
 image.save(filename)
+
