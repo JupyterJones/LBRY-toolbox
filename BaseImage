@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 #!/usr/bin/python
-=======
-#!/usr/bin/python2
->>>>>>> cb51fd3fc356db5f4dbc4a579b92b7440ab6a839
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
@@ -49,10 +45,5 @@ fig.patch.set_facecolor('salmon')
 plt.plot(t, s, color= 'blue')
 plt.plot(t, S, color= 'green')
 #filename = "video_resources/"+dt+"test1.png"
-<<<<<<< HEAD
 filename0 = "/home/jack/Desktop/VPS_resources/"+dt+"full.png"
 plt.savefig(filename0 , bbox_inches="tight", facecolor="salmon")
-=======
-filename0 = "/home/jack/Desktop/JupyterNotebooks-languages/video_resources/"+dt+"full.png"
-plt.savefig(filename0 , bbox_inches="tight", facecolor="salmon")
->>>>>>> cb51fd3fc356db5f4dbc4a579b92b7440ab6a839
