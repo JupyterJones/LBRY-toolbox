@@ -1,5 +1,3 @@
-
-
 #echo "{ \"Date\": `date`," >>/home/jack/wallet.balance
 echo "{ \"Date\": `date +%s`," >>/home/jack/wallet.balance
 

@@ -1,1 +1,0 @@
-git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch File Computer-Graphics-Javascript-Kdenlive-Open-Source-Software.mp4' HEAD
