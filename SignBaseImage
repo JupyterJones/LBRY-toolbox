@@ -98,6 +98,6 @@ over = Image.open("/home/jack/Desktop/post/pil_text.png")
 over2 = Image.open("/home/jack/Desktop/LBRY-toolbox/images/logo.png")
 image.paste(over, (50,250))
 image.paste(over2, (50,395))
-filename = time.strftime("/home/jack/Desktop/VPS_resources/%Y%m%d%H%M-"+"final.png")
+filename = time.strftime("/home/jack/Desktop/LBRY-toolbox/images/%Y%m%d%H%M-"+"final.png")
 image.save(filename)
 
